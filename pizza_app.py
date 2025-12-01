@@ -295,13 +295,14 @@ class GUI(tk.Tk, Terminal):
         messagebox.showinfo("Спасибо", f"Спасибо, {customer_name} за заказ!")
 
 
-terminal = Terminal()
-gui = GUI(terminal)
-gui.mainloop()
-gui.terminal("100x100")
-gui.terminal(width=False, height=False)
-while True:
-    asyncio.run(terminal.take_order())
-    choice = input("Хотите заказать еще? (да/нет) ")
-    if choice != 'да':
-        break
+if __name__ == "__main__":
+    terminal = Terminal()
+    gui = GUI(terminal)
+    gui.mainloop()
+    gui.geometry("100x100")
+
+    while True:
+        asyncio.run(terminal.take_order())
+        choice = input("Хотите заказать еще? (да/нет) ")
+        if choice != 'да':
+            break
